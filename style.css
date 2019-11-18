@@ -1,0 +1,62 @@
+.my-inputs {
+  border: 1px solid rgba(0, 0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px #000;
+  margin: 10px;
+  padding: 5px;
+}
+
+.my-inputs:focus {
+  outline: none;
+}
+
+.center-form {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.field {
+  clear: both;
+  text-align: right;
+  line-height: 25px;
+  align-items: center;
+}
+
+label {
+  padding-right: 10px;
+}
+
+.btn-register {
+  border: none;
+  padding: 8px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgb(24, 39, 252);
+  position: absolute;
+  left: 50%;
+  cursor: pointer;
+}
+
+.valid {
+  box-shadow: 0px 0px 15px rgb(2, 149, 21);
+}
+
+.invalid {
+  box-shadow: 0px 0px 15px rgb(255, 0, 0);
+}
+
+.btn-register:hover {
+  background-color: rgba(24, 39, 252, 0.8);
+}
+
+.btn-register:active {
+  background-color: rgba(24, 39, 252, 0.6);
+  top: 100.5%;
+}
+
+.btn-register:focus {
+  outline: none;
+}
