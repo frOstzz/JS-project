@@ -1,3 +1,5 @@
+import { ifEmptyInput, passwordValid } from '../modules/validateFunc.js';
+
 let registered = false;
 
 const createRegisterForm = () => {
@@ -74,70 +76,12 @@ const createRegisterForm = () => {
 
   form.appendChild(buttonRegister);
 
-  const isValidDate = () => {
-    let validValues = {
-      successValue: false,
-      notEmptyValues: false,
-      successValueAcceptPassLength: false,
-      successValuePassLength: false,
-      notEmailEmpty: false,
-      notUsernameEmpty: false,
-    };
+  ifEmptyInput('username');
+  ifEmptyInput('password');
+  ifEmptyInput('accept-password');
+  ifEmptyInput('email');
 
-    if (registerPassword.value == acceptPassword.value) {
-      registerPassword.classList.add('valid');
-      acceptPassword.classList.add('valid');
-      validValues.successValue = true;
-    } else {
-      registerPassword.classList.add('invalid');
-      acceptPassword.classList.add('invalid');
-    }
-
-    if (registerPassword.value == '' && acceptPassword.value == '') {
-      registerPassword.classList.add('invalid');
-      acceptPassword.classList.add('invalid');
-    } else {
-      validValues.notEmptyValues = true;
-    }
-
-    if (registerPassword.value.length < 5) {
-      registerPassword.classList.add('invalid');
-    } else {
-      validValues.successValuePassLength = true;
-    }
-
-    if (acceptPassword.value.length < 5) {
-      acceptPassword.classList.add('invalid');
-    } else {
-      validValues.successValueAcceptPassLength = true;
-    }
-
-    if (registerMail.value == '') {
-      registerMail.classList.add('invalid');
-    } else {
-      registerMail.classList.add('valid');
-      validValues.notEmailEmpty = true;
-    }
-
-    if (registerUsername.value == '') {
-      registerUsername.classList.add('invalid');
-    } else {
-      validValues.notUsernameEmpty = true;
-    }
-
-    if (
-      validValues.successValue &&
-      validValues.notEmptyValues &&
-      validValues.successValuePassLength &&
-      validValues.successValueAcceptPassLength &&
-      validValues.notEmailEmpty === true
-    ) {
-      container.remove(form);
-      registered = true;
-    }
-  };
-
-  buttonRegister.addEventListener('click', isValidDate);
+  buttonRegister.addEventListener('click', passwordValid);
 };
 
 createRegisterForm();
