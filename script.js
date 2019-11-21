@@ -1,6 +1,7 @@
-import { ifEmptyInput, passwordValid } from '../modules/validateFunc.js';
+import { ifEmptyInput, passwordValid, lengthInputs } from './scripts/modules/validateFunc.js';
 
 let registered = false;
+let guess = 5;
 
 const createRegisterForm = () => {
   const container = document.createElement('div');
@@ -76,12 +77,22 @@ const createRegisterForm = () => {
 
   form.appendChild(buttonRegister);
 
-  ifEmptyInput('username');
-  ifEmptyInput('password');
-  ifEmptyInput('accept-password');
-  ifEmptyInput('email');
+  const isValidDate = () => {
+    // ifEmptyInput('username');
+    ifEmptyInput('password');
+    ifEmptyInput('accept-password');
+    ifEmptyInput('email');
+    if (passwordValid() === false) {
+      guess -= 1;
+      alert(`Your guess = ${guess}`);
+    }
+    if (guess === 0) {
+      alert(`Return this page your guess = ${guess}`);
+    }
+    lengthInputs();
+  };
 
-  buttonRegister.addEventListener('click', passwordValid);
+  buttonRegister.addEventListener('click', isValidDate);
 };
 
 createRegisterForm();

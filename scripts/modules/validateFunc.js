@@ -1,14 +1,12 @@
 export const ifEmptyInput = (inputId) => {
   const input = document.getElementById(inputId);
 
-  input.addEventListener('blur', () => {
-    if (input.value === '') {
-      input.classList.add('invalid');
-    } else {
-      input.classList.remove('invalid');
-      input.classList.add('valid');
-    }
-  });
+  if (input.value === '') {
+    input.classList.add('invalid');
+  } else {
+    input.classList.remove('invalid');
+    input.classList.add('valid');
+  }
 };
 
 export const passwordValid = () => {
@@ -18,5 +16,14 @@ export const passwordValid = () => {
   if (pass.value !== acceptPass.value) {
     pass.classList.add('invalid');
     acceptPass.classList.add('invalid');
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const lengthInputs = (input) => {
+  if (input.value > 5) {
+    console.log(`stop`);
   }
 };
