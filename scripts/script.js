@@ -1,4 +1,4 @@
-import { ifEmptyInput, passwordValid, lengthInputs } from './scripts/modules/validateFunc.js';
+import { ifEmptyInput, passwordValid, lengthInputs } from './modules/validateFunc.js';
 
 let registered = false;
 let guess = 5;
