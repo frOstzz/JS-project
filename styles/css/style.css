@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh; }
+
+.information {
+  height: 500px;
+  border: 1px solid #000;
+  width: 350px;
+  margin: 0px 10px 0px 10px; }
+  .information .my-button {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    background-color: #1b4be7;
+    -webkit-transition: 0.2s ease-in-out all;
+    -o-transition: 0.2s ease-in-out all;
+    transition: 0.2s ease-in-out all;
+    cursor: pointer; }
+    .information .my-button:hover {
+      -webkit-transition: 0.2s ease-in-out all;
+      -o-transition: 0.2s ease-in-out all;
+      transition: 0.2s ease-in-out all;
+      background-color: #fff;
+      border: 1px solid #000;
+      letter-spacing: 5px; }
+    .information .my-button:focus {
+      outline: none; }
+
+.person-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .person-info .info-text {
+    font-size: 20px; }
+
+.state-list {
+  height: 80vh;
+  border: 1px solid #000;
+  width: 100%;
+  margin: 0px 0px 0px 10px; }

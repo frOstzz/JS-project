@@ -29,7 +29,7 @@ export const publicateButton = {
   type: 'button',
   id: 'publicate',
   className: 'my-button',
-  value: 'click me',
+  value: 'Publicate',
 };
 
 export const createHashForDiv = (id, className) => {

@@ -7,23 +7,32 @@ import {
 } from '../scripts/modules/createElements.js';
 
 const main = () => {
+  //divs
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
-  const div = createContentEditableDiv(createHashForDiv('test', 'test'));
-  const btn = createButtons(publicateButton);
-  div.innerHTML = '<strong>Test</strong>';
+  const editor = createContentEditableDiv(createHashForDiv('editor', 'editor'));
+  const information = createDivs(createHashForDiv('', 'information'));
+  const stateList = createDivs(createHashForDiv('state-list', 'state-list'));
+  const personInfo = createDivs(createHashForDiv('', 'person-info'));
+
+  //times code==============
+  const username = 'Admin';
+  const states = '3';
+
+  personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
+                          <span class="info-text">Your states: <strong>${states}</strong></span>`;
+  //============================
+
+  //buttons
+  const addArticle = createButtons(publicateButton);
 
   document.body.appendChild(mainDiv);
-  mainDiv.appendChild(div);
-  mainDiv.appendChild(btn);
+  //mainDiv.appendChild(editor); Contenteditable div
 
-  let test = document.querySelectorAll('div');
-  btn.addEventListener('click', () => {
-    for (let i = 0; i < test.length; i += 1) {
-      const test1 = createDivs(createHashForDiv('test' + i, 'test'));
-      test1.innerHTML = div.textContent;
-      document.body.appendChild(test1);
-    }
-  });
+  mainDiv.appendChild(stateList);
+
+  mainDiv.appendChild(information);
+  information.appendChild(personInfo);
+  personInfo.appendChild(addArticle);
 };
 
 main();

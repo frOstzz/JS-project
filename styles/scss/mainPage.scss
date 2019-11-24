@@ -1,0 +1,55 @@
+@import 'variables';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.information {
+  height: 500px;
+  border: 1px solid #000;
+  width: 350px;
+  margin: 0px 10px 0px 10px;
+  .my-button {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    background-color: $colorButton;
+    transition: 0.2s ease-in-out all;
+    cursor: pointer;
+    &:hover {
+      transition: 0.2s ease-in-out all;
+      background-color: #fff;
+      border: 1px solid #000;
+      letter-spacing: 5px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.person-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  .info-text {
+    font-size: 20px;
+  }
+}
+
+.state-list {
+  height: 80vh;
+  border: 1px solid #000;
+  width: 100%;
+  margin: 0px 0px 0px 10px;
+}
