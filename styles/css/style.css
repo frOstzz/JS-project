@@ -61,3 +61,19 @@ body {
   border: 1px solid #000;
   width: 100%;
   margin: 0px 0px 0px 10px; }
+
+.container-editor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.editor {
+  height: 500px;
+  width: 70%;
+  border: 1px solid #000;
+  margin: 50px 0px 0px 0px; }
+  .editor:focus {
+    outline: none; }

@@ -6,9 +6,10 @@ import {
   createDivs,
 } from '../modules/createElements.js';
 
+import { createEditor } from '../modules/editor.js';
+
 export const createMainPage = () => {
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
-  const editor = createContentEditableDiv(createHashForDiv('editor', 'editor'));
   const information = createDivs(createHashForDiv('', 'information'));
   const stateList = createDivs(createHashForDiv('state-list', 'state-list'));
   const personInfo = createDivs(createHashForDiv('', 'person-info'));
@@ -36,6 +37,7 @@ export const createMainPage = () => {
   personInfo.appendChild(addArticle);
 
   addArticle.addEventListener('click', () => {
-    mainDiv.remove(combineDiv);
+    mainDiv.remove();
   });
+  addArticle.addEventListener('click', createEditor);
 };
