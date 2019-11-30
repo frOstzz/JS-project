@@ -1,7 +1,6 @@
 import {
   createButtons,
   publicateButton,
-  createContentEditableDiv,
   createHashForDiv,
   createDivs,
 } from '../modules/createElements.js';

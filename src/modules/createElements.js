@@ -1,3 +1,5 @@
+import { createEditor } from './editor.js';
+
 //functions===========================
 export const createButtons = (hash) => {
   const element = document.createElement(hash.elem);
@@ -5,6 +7,13 @@ export const createButtons = (hash) => {
   element.id = hash.id;
   element.className = hash.className;
   element.value = hash.value;
+  return element;
+};
+
+export const createEditButton = (hash) => {
+  const element = document.createElement('button');
+  element.setAttribute(hash.attrName, hash.dataAttribute);
+  element.className = hash.className;
   return element;
 };
 
@@ -23,6 +32,18 @@ export const createDivs = (hash) => {
   return div;
 };
 
+export const createHeadingList = (place) => {
+  const select = document.createElement('select');
+  select.id = 'heading';
+  place.appendChild(select);
+
+  for (let i = 1; i <= 6; i += 1) {
+    const option = new Option(`H${i}`, `H${i}`);
+    select.appendChild(option);
+  }
+  return select;
+};
+
 //Hash elements =======================
 export const publicateButton = {
   elem: 'input',
@@ -39,4 +60,13 @@ export const createHashForDiv = (id, className) => {
     className: className,
   };
   return divHash;
+};
+
+export const createHashEditButton = (attr, className) => {
+  const buttonHash = {
+    attrName: 'data-attribute',
+    dataAttribute: attr,
+    className: `editor-buttons ${className}`,
+  };
+  return buttonHash;
 };
