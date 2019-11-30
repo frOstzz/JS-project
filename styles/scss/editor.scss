@@ -2,15 +2,19 @@
 
 .container-editor {
   display: flex;
-  justify-content: center;
-}
-
-.editor {
-  height: 500px;
-  width: 70%;
-  border: 1px solid #000;
-  margin: 50px 0px 0px 0px;
-  &:focus {
-    outline: none;
+  align-items: center;
+  flex-direction: column;
+  .edit-buttons {
+    width: 70%;
+    border: 1px solid #000;
+    border-bottom: none;
+  }
+  .editor {
+    height: 500px;
+    width: 70%;
+    border: 1px solid #000;
+    &:focus {
+      outline: none;
+    }
   }
 }
