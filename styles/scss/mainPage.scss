@@ -13,10 +13,11 @@ body {
 }
 
 .information {
-  height: 500px;
+  height: 90vh;
+  overflow: hidden;
   border: 1px solid #000;
   width: 350px;
-  margin: 0px 10px 0px 10px;
+  margin: 10px;
   .my-button {
     border: none;
     padding: 10px;
@@ -48,8 +49,20 @@ body {
 }
 
 .state-list {
-  height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  height: 90vh;
+  justify-content: center;
+  overflow: auto;
   border: 1px solid #000;
   width: 100%;
   margin: 0px 0px 0px 10px;
+
+  .custom-article {
+    border: 2px solid #000;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    flex-basis: 20%;
+  }
 }

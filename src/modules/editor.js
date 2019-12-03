@@ -6,7 +6,12 @@ import {
   createHashEditButton,
   createHeadingList,
   createButtons,
+  publicateButton,
+  createInputs,
+  articleTitleInputHash,
 } from '../modules/createElements.js';
+
+import { createMainPage } from './mainPage.js';
 
 export const createEditor = () => {
   const mainDiv = createDivs(createHashForDiv('', 'container-editor'));
@@ -36,6 +41,10 @@ export const createEditor = () => {
   const listOl = createEditButton(createHashEditButton('insertOrderedList', 'fa fa-list-ol'));
   const paragraph = createEditButton(createHashEditButton('insertParagraph', 'fa fa-paragraph'));
 
+  const title = createInputs(articleTitleInputHash);
+
+  const pubBtn = createButtons(publicateButton);
+
   document.body.appendChild(mainDiv);
   mainDiv.appendChild(editorButtons);
 
@@ -62,8 +71,55 @@ export const createEditor = () => {
   createHeadingList(editorButtons);
 
   mainDiv.appendChild(editor);
+  editor.appendChild(title);
 
-  //разобрать этот бардак
+  mainDiv.appendChild(pubBtn);
+
+  workEditor();
+
+  //Баг
+  pubBtn.addEventListener('click', () => {
+    const artTitleTest = document.getElementsByClassName('article-title');
+    console.log(artTitleTest);
+    mainDiv.remove();
+    createMainPage();
+
+    const test = createDivs(createHashForDiv('state', 'custom-article'));
+
+    test.innerHTML = artTitleTest.outerText;
+
+    const stateList = document.getElementById('state-list');
+    stateList.appendChild(test);
+  });
+
+  const test1 = document.getElementsByClassName('custom-article');
+  for (let i = 0; i < test1.length; i = +1) {
+    const stateList = document.getElementById('state-list');
+    const test = createDivs(createHashForDiv('state' + i, 'custom-article'));
+    stateList.appendChild(test);
+  }
+
+  pubBtn.addEventListener('click', () => {
+    //const test = editor.insertAdjacentHTML('afterend', editor.innerHTML);
+    const test = editor.innerHTML;
+    document.body.append(test);
+  });
+
+  // pubBtn.addEventListener('click', () => {
+  //   mainDiv.remove();
+  //   createMainPage();
+  // });
+  // for (let i = 0; i < 4; i++) {
+  //   pubBtn.addEventListener('click', () => {
+  //     const stateList = document.getElementById('state-list');
+  //     const article = createDivs(createHashForDiv('state', 'custom-article'));
+
+  //     stateList.appendChild(article);
+  //   });
+  // }
+};
+
+const workEditor = () => {
   const allEditorButtons = document.getElementsByClassName('editor-buttons');
   const heading = document.getElementById('heading');
 

@@ -16,5 +16,10 @@
     &:focus {
       outline: none;
     }
+    .article-title {
+      height: 30px;
+      width: 100%;
+      border: 1px solid #000;
+    }
   }
 }

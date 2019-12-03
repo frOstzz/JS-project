@@ -44,6 +44,14 @@ export const createHeadingList = (place) => {
   return select;
 };
 
+export const createInputs = (hash) => {
+  const input = document.createElement('input');
+  input.id = hash.id;
+  input.placeholder = hash.placeholder;
+  input.className = hash.className;
+  return input;
+};
+
 //Hash elements =======================
 export const publicateButton = {
   elem: 'input',
@@ -69,4 +77,10 @@ export const createHashEditButton = (attr, className) => {
     className: `editor-buttons ${className}`,
   };
   return buttonHash;
+};
+
+export const articleTitleInputHash = {
+  id: 'title',
+  placeholder: 'Enter your title',
+  className: 'article-title',
 };

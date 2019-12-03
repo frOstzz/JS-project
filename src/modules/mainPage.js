@@ -19,7 +19,7 @@ export const createMainPage = () => {
   const states = '3';
 
   personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                              <span class="info-text">Your states: <strong>${states}</strong></span>`;
+                          <span class="info-text">Your states: <strong>${states}</strong></span>`;
   //============================
 
   //buttons

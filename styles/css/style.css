@@ -15,10 +15,11 @@ body {
   height: 100vh; }
 
 .information {
-  height: 500px;
+  height: 90vh;
+  overflow: hidden;
   border: 1px solid #000;
   width: 350px;
-  margin: 0px 10px 0px 10px; }
+  margin: 10px; }
   .information .my-button {
     border: none;
     padding: 10px;
@@ -57,10 +58,26 @@ body {
     font-size: 20px; }
 
 .state-list {
-  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 90vh;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: auto;
   border: 1px solid #000;
   width: 100%;
   margin: 0px 0px 0px 10px; }
+  .state-list .custom-article {
+    border: 2px solid #000;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    -ms-flex-preferred-size: 20%;
+    flex-basis: 20%; }
 
 .container-editor {
   display: -webkit-box;
@@ -83,3 +100,7 @@ body {
     border: 1px solid #000; }
     .container-editor .editor:focus {
       outline: none; }
+    .container-editor .editor .article-title {
+      height: 30px;
+      width: 100%;
+      border: 1px solid #000; }
