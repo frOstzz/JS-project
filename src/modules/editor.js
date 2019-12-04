@@ -11,11 +11,9 @@ import {
   articleTitleInputHash,
 } from '../modules/createElements.js';
 
-import { arrForState } from './storage.js';
+import { arrForState, stateCounter } from './storage.js';
 
 export const createEditor = () => {
-  let test = 1;
-
   const mainContainer = document.getElementById('container');
   const mainDiv = createDivs(createHashForDiv('', 'container-editor'));
   const editorButtons = createDivs(createHashForDiv('', 'edit-buttons'));
@@ -105,6 +103,8 @@ export const createEditor = () => {
     for (let i = 0; i < stateEditorList.length; i += 1) {
       mainDiv.id = 'edit-state' + stateEditorList.length;
       publicateButton.id = 'publicate' + stateEditorList.length;
+      //stateCounter += stateEditorList.length;
+      stateCounter = i; //bug with state counter
     }
   };
 
@@ -117,14 +117,9 @@ export const createEditor = () => {
 
     storage();
 
-    console.log(arrForState);
-
-    console.log(arrForState.hashForState);
-
     for (let i = 0; i < arrForState.length; i += 1) {
-      state.appendChild(arrForState[i].hashForState.title); //bug, in first state not inner title
+      state.innerHTML = arrForState[i].title;
     }
-    //state.innerHTML = hashForState.title;
   };
 
   const allBtnPublicate = document.getElementsByClassName('my-button');
@@ -132,7 +127,6 @@ export const createEditor = () => {
   for (let i = 1; i < allBtnPublicate.length; i += 1) {
     allBtnPublicate[i].addEventListener('click', hideEditor);
     allBtnPublicate[i].addEventListener('click', addState);
-    //allBtnPublicate[i].addEventListener('click', storage);
   }
 };
 
