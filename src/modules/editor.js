@@ -11,7 +11,7 @@ import {
   articleTitleInputHash,
 } from '../modules/createElements.js';
 
-import { createMainPage } from './mainPage.js';
+import { arrForState } from './storage.js';
 
 export const createEditor = () => {
   let test = 1;
@@ -83,39 +83,19 @@ export const createEditor = () => {
   const stateEditorList = document.getElementsByClassName('state-editor');
   const allTitles = document.getElementsByClassName('article-title');
 
-  let arrForState = [];
-  let hashForState = {};
-
   const storage = () => {
-    const editor = document.getElementById('editor');
+    let hashForState = {};
 
     hashForState.title = title.value;
-    hashForState.state = editor.outerHTML;
+    hashForState.state = editor.outerText;
     arrForState.push(hashForState);
 
-    // for (let i = 0; i < arrForState.length; i += 1) {
-    //   hashForState.title = title[i].value;
-    //   hashForState.state = editor.outerHTML;
-    //   arrForState.push(hashForState);
-    // }
-
-    // for (let i = 0; i < arrForState.length; i += 1) {
-    //   arrForState.push(hashForState);
-    // }
-
-    //console.log(document.getElementsByClassName('editor'));
-    console.log(arrForState);
+    return hashForState;
   };
 
   const hideEditor = () => {
     mainDiv.classList.remove('container-editor');
     mainDiv.classList.add('hide', 'state-editor');
-
-    for (let i = 0; i < stateEditorList.length; i += 1) {
-      storage();
-    }
-
-    //storage();
 
     const combineDiv = document.getElementById('combine-div');
 
@@ -134,7 +114,17 @@ export const createEditor = () => {
     state.className = 'custom-article';
     state.id = 'state' + stateEditorList.length;
     stateList.appendChild(state);
-    state.innerHTML = hashForState.title;
+
+    storage();
+
+    console.log(arrForState);
+
+    console.log(arrForState.hashForState);
+
+    for (let i = 0; i < arrForState.length; i += 1) {
+      state.appendChild(arrForState[i].hashForState.title); //bug, in first state not inner title
+    }
+    //state.innerHTML = hashForState.title;
   };
 
   const allBtnPublicate = document.getElementsByClassName('my-button');
@@ -142,6 +132,7 @@ export const createEditor = () => {
   for (let i = 1; i < allBtnPublicate.length; i += 1) {
     allBtnPublicate[i].addEventListener('click', hideEditor);
     allBtnPublicate[i].addEventListener('click', addState);
+    //allBtnPublicate[i].addEventListener('click', storage);
   }
 };
 
