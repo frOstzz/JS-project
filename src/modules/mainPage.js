@@ -6,6 +6,7 @@ import {
 } from '../modules/createElements.js';
 
 import { createEditor } from '../modules/editor.js';
+import { stateCounter } from '../modules/storage.js';
 
 export const createMainPage = () => {
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
@@ -16,10 +17,9 @@ export const createMainPage = () => {
 
   //times code==============
   const username = 'Admin';
-  const states = '3';
 
   personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                          <span class="info-text">Your states: <strong>${states}</strong></span>`;
+                          <span class="info-text">Your states: <strong>${stateCounter}</strong></span>`;
   //============================
 
   //buttons
