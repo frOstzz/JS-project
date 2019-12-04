@@ -12,7 +12,7 @@ export const createMainPage = () => {
   const information = createDivs(createHashForDiv('', 'information'));
   const stateList = createDivs(createHashForDiv('state-list', 'state-list'));
   const personInfo = createDivs(createHashForDiv('', 'person-info'));
-  const combineDiv = createDivs(createHashForDiv('', 'combine-div'));
+  const combineDiv = createDivs(createHashForDiv('combine-div', 'combine-div'));
 
   //times code==============
   const username = 'Admin';
@@ -36,7 +36,8 @@ export const createMainPage = () => {
   personInfo.appendChild(addArticle);
 
   addArticle.addEventListener('click', () => {
-    mainDiv.remove();
+    combineDiv.classList.remove('combine-div');
+    combineDiv.classList.add('hide');
   });
   addArticle.addEventListener('click', createEditor);
 };

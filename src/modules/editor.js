@@ -14,6 +14,9 @@ import {
 import { createMainPage } from './mainPage.js';
 
 export const createEditor = () => {
+  let test = 1;
+
+  const mainContainer = document.getElementById('container');
   const mainDiv = createDivs(createHashForDiv('', 'container-editor'));
   const editorButtons = createDivs(createHashForDiv('', 'edit-buttons'));
   const editor = createContentEditableDiv(createHashForDiv('editor', 'editor'));
@@ -45,7 +48,7 @@ export const createEditor = () => {
 
   const pubBtn = createButtons(publicateButton);
 
-  document.body.appendChild(mainDiv);
+  mainContainer.appendChild(mainDiv);
   mainDiv.appendChild(editorButtons);
 
   //append edit buttons
@@ -77,46 +80,31 @@ export const createEditor = () => {
 
   workEditor();
 
-  //Баг
-  pubBtn.addEventListener('click', () => {
-    const artTitleTest = document.getElementsByClassName('article-title');
-    console.log(artTitleTest);
-    mainDiv.remove();
-    createMainPage();
+  const hideEditor = () => {
+    mainDiv.classList.remove('container-editor');
+    mainDiv.classList.add('hide', 'state-editor');
 
-    const test = createDivs(createHashForDiv('state', 'custom-article'));
+    const combineDiv = document.getElementById('combine-div');
 
-    test.innerHTML = artTitleTest.outerText;
+    combineDiv.classList.remove('hide');
+    combineDiv.classList.add('combine-div');
 
+    const stateEditorList = document.getElementsByClassName('state-editor');
+
+    for (let i = 0; i < stateEditorList.length; i += 1) {
+      mainDiv.id = 'edit-state' + stateEditorList.length;
+    }
+  };
+
+  const addState = () => {
     const stateList = document.getElementById('state-list');
-    stateList.appendChild(test);
-  });
+    const state = document.createElement('div');
+    state.className = 'custom-article';
+    stateList.appendChild(state);
+  };
 
-  const test1 = document.getElementsByClassName('custom-article');
-  for (let i = 0; i < test1.length; i = +1) {
-    const stateList = document.getElementById('state-list');
-    const test = createDivs(createHashForDiv('state' + i, 'custom-article'));
-    stateList.appendChild(test);
-  }
-
-  pubBtn.addEventListener('click', () => {
-    //const test = editor.insertAdjacentHTML('afterend', editor.innerHTML);
-    const test = editor.innerHTML;
-    document.body.append(test);
-  });
-
-  // pubBtn.addEventListener('click', () => {
-  //   mainDiv.remove();
-  //   createMainPage();
-  // });
-  // for (let i = 0; i < 4; i++) {
-  //   pubBtn.addEventListener('click', () => {
-  //     const stateList = document.getElementById('state-list');
-  //     const article = createDivs(createHashForDiv('state', 'custom-article'));
-
-  //     stateList.appendChild(article);
-  //   });
-  // }
+  pubBtn.addEventListener('click', hideEditor);
+  pubBtn.addEventListener('click', addState);
 };
 
 const workEditor = () => {
