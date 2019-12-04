@@ -5,6 +5,14 @@ body {
   padding: 0;
 }
 
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 .combine-div {
   display: flex;
   justify-content: space-between;

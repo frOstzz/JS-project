@@ -2,6 +2,12 @@ body {
   margin: 0;
   padding: 0; }
 
+.show {
+  display: block; }
+
+.hide {
+  display: none; }
+
 .combine-div {
   display: -webkit-box;
   display: -ms-flexbox;
