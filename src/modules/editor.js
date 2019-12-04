@@ -80,19 +80,51 @@ export const createEditor = () => {
 
   workEditor();
 
+  const stateEditorList = document.getElementsByClassName('state-editor');
+  const allTitles = document.getElementsByClassName('article-title');
+
+  let arrForState = [];
+  let hashForState = {};
+
+  const storage = () => {
+    const editor = document.getElementById('editor');
+
+    hashForState.title = title.value;
+    hashForState.state = editor.outerHTML;
+    arrForState.push(hashForState);
+
+    // for (let i = 0; i < arrForState.length; i += 1) {
+    //   hashForState.title = title[i].value;
+    //   hashForState.state = editor.outerHTML;
+    //   arrForState.push(hashForState);
+    // }
+
+    // for (let i = 0; i < arrForState.length; i += 1) {
+    //   arrForState.push(hashForState);
+    // }
+
+    //console.log(document.getElementsByClassName('editor'));
+    console.log(arrForState);
+  };
+
   const hideEditor = () => {
     mainDiv.classList.remove('container-editor');
     mainDiv.classList.add('hide', 'state-editor');
+
+    for (let i = 0; i < stateEditorList.length; i += 1) {
+      storage();
+    }
+
+    //storage();
 
     const combineDiv = document.getElementById('combine-div');
 
     combineDiv.classList.remove('hide');
     combineDiv.classList.add('combine-div');
 
-    const stateEditorList = document.getElementsByClassName('state-editor');
-
     for (let i = 0; i < stateEditorList.length; i += 1) {
       mainDiv.id = 'edit-state' + stateEditorList.length;
+      publicateButton.id = 'publicate' + stateEditorList.length;
     }
   };
 
@@ -100,11 +132,17 @@ export const createEditor = () => {
     const stateList = document.getElementById('state-list');
     const state = document.createElement('div');
     state.className = 'custom-article';
+    state.id = 'state' + stateEditorList.length;
     stateList.appendChild(state);
+    state.innerHTML = hashForState.title;
   };
 
-  pubBtn.addEventListener('click', hideEditor);
-  pubBtn.addEventListener('click', addState);
+  const allBtnPublicate = document.getElementsByClassName('my-button');
+
+  for (let i = 1; i < allBtnPublicate.length; i += 1) {
+    allBtnPublicate[i].addEventListener('click', hideEditor);
+    allBtnPublicate[i].addEventListener('click', addState);
+  }
 };
 
 const workEditor = () => {
