@@ -21,28 +21,31 @@ export const createEditor = () => {
   const editorButtons = createDivs(createHashForDiv('', 'edit-buttons'));
   const editor = createContentEditableDiv(createHashForDiv('editor', 'editor'));
 
-  //create editor buttons
-  const bold = createEditButton(createHashEditButton('bold', 'fa fa-bold'));
-  const italic = createEditButton(createHashEditButton('italic', 'fa fa-italic'));
-  const underline = createEditButton(createHashEditButton('underline', 'fa fa-underline'));
-  const strikeThrough = createEditButton(
-    createHashEditButton('strikeThrough', 'fa fa-strikethrough'),
-  );
-  const alignLeft = createEditButton(createHashEditButton('justifyLeft', 'fa fa-align-left'));
-  const alignCenter = createEditButton(createHashEditButton('justifyCenter', 'fa fa-align-center'));
-  const alignRight = createEditButton(createHashEditButton('justifyRight', 'fa fa-align-right'));
-  const alignJustify = createEditButton(createHashEditButton('justifyFull', 'fa fa-align-justify'));
-  const cut = createEditButton(createHashEditButton('cut', 'fa fa-cut'));
-  const copy = createEditButton(createHashEditButton('copy', 'fa fa-copy'));
-  const indent = createEditButton(createHashEditButton('indent', 'fa fa-indent'));
-  const outdent = createEditButton(createHashEditButton('outdent', 'fa fa-dedent'));
-  const subscript = createEditButton(createHashEditButton('subscript', 'fa fa-subscript'));
-  const superscript = createEditButton(createHashEditButton('superscript', 'fa fa-superscript'));
-  const undo = createEditButton(createHashEditButton('undo', 'fa fa-undo'));
-  const repeat = createEditButton(createHashEditButton('redo', 'fa fa-repeat'));
-  const listUl = createEditButton(createHashEditButton('insertUnorderedList', 'fa fa-list-ul'));
-  const listOl = createEditButton(createHashEditButton('insertOrderedList', 'fa fa-list-ol'));
-  const paragraph = createEditButton(createHashEditButton('insertParagraph', 'fa fa-paragraph'));
+  const buttons = [
+    { name: 'bold', icon: 'fa fa-bold' },
+    { name: 'italic', icon: 'fa fa-italic' },
+    { name: 'underline', icon: 'fa fa-underline' },
+    { name: 'strikeThrough', icon: 'fa fa-strikethrough' },
+    { name: 'justifyLeft', icon: 'fa fa-align-left' },
+    { name: 'justifyCenter', icon: 'fa fa-align-center' },
+    { name: 'justifyRight', icon: 'fa fa-align-right' },
+    { name: 'justifyFull', icon: 'fa fa-align-justify' },
+    { name: 'cut', icon: 'fa fa-cut' },
+    { name: 'copy', icon: 'fa fa-copy' },
+    { name: 'indent', icon: 'fa fa-indent' },
+    { name: 'outdent', icon: 'fa fa-dedent' },
+    { name: 'subscript', icon: 'fa fa-subscript' },
+    { name: 'superscript', icon: 'fa fa-superscript' },
+    { name: 'undo', icon: 'fa fa-undo' },
+    { name: 'redo', icon: 'fa fa-repeat' },
+    { name: 'insertUnorderedList', icon: 'fa fa-list-ul' },
+    { name: 'insertOrderedList', icon: 'fa fa-list-ol' },
+    { name: 'insertParagraph', icon: 'fa fa-paragraph' },
+  ];
+
+  buttons.forEach((button) => {
+    editorButtons.appendChild(createEditButton(createHashEditButton(button.name, button.icon)));
+  });
 
   const title = createInputs(articleTitleInputHash);
 
@@ -51,26 +54,6 @@ export const createEditor = () => {
   mainContainer.appendChild(mainDiv);
   mainDiv.appendChild(editorButtons);
 
-  //append edit buttons
-  editorButtons.appendChild(bold);
-  editorButtons.appendChild(italic);
-  editorButtons.appendChild(underline);
-  editorButtons.appendChild(strikeThrough);
-  editorButtons.appendChild(alignLeft);
-  editorButtons.appendChild(alignCenter);
-  editorButtons.appendChild(alignRight);
-  editorButtons.appendChild(alignJustify);
-  editorButtons.appendChild(cut);
-  editorButtons.appendChild(copy);
-  editorButtons.appendChild(indent);
-  editorButtons.appendChild(outdent);
-  editorButtons.appendChild(subscript);
-  editorButtons.appendChild(superscript);
-  editorButtons.appendChild(undo);
-  editorButtons.appendChild(repeat);
-  editorButtons.appendChild(listUl);
-  editorButtons.appendChild(listOl);
-  editorButtons.appendChild(paragraph);
   createHeadingList(editorButtons);
 
   mainDiv.appendChild(editor);
@@ -81,7 +64,6 @@ export const createEditor = () => {
   workEditor();
 
   const stateEditorList = document.getElementsByClassName('state-editor');
-  const allTitles = document.getElementsByClassName('article-title');
 
   const storage = () => {
     let hashForState = {};
@@ -105,8 +87,6 @@ export const createEditor = () => {
     for (let i = 0; i < stateEditorList.length; i += 1) {
       mainDiv.id = 'edit-state' + stateEditorList.length;
       publicateButton.id = 'publicate' + stateEditorList.length;
-      //stateCounter += stateEditorList.length;
-      //stateCounter = i; //bug with state counter
     }
   };
 
@@ -120,7 +100,7 @@ export const createEditor = () => {
     storage();
 
     for (let i = 0; i < arrForState.length; i += 1) {
-      state.innerHTML = arrForState[i].title;
+      state.innerHTML = `<span class="state-title">${arrForState[i].title}</span>`;
     }
   };
 
