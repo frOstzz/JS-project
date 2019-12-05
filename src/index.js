@@ -3,4 +3,4 @@ const main = () => {
   createMainPage();
 };
 
-main();
+window.onload = main();
