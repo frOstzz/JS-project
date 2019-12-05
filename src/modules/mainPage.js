@@ -20,9 +20,8 @@ export const createMainPage = () => {
 
   let counter = stateCounter();
 
-  personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>`;
-
-  personInfo.innerHTML = `<span class="info-text">Your states: <strong>${counter}</strong></span>`; //bug
+  personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
+                          <span class="info-text">Your states: <strong>${counter}</strong></span>`; //bug
 
   //============================
 
