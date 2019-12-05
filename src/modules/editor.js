@@ -11,7 +11,9 @@ import {
   articleTitleInputHash,
 } from '../modules/createElements.js';
 
-import { arrForState, stateCounter } from './storage.js';
+import { arrForState } from './storage.js';
+
+import { stateCounter } from './mainPage.js';
 
 export const createEditor = () => {
   const mainContainer = document.getElementById('container');
@@ -104,7 +106,7 @@ export const createEditor = () => {
       mainDiv.id = 'edit-state' + stateEditorList.length;
       publicateButton.id = 'publicate' + stateEditorList.length;
       //stateCounter += stateEditorList.length;
-      stateCounter = i; //bug with state counter
+      //stateCounter = i; //bug with state counter
     }
   };
 
@@ -127,6 +129,7 @@ export const createEditor = () => {
   for (let i = 1; i < allBtnPublicate.length; i += 1) {
     allBtnPublicate[i].addEventListener('click', hideEditor);
     allBtnPublicate[i].addEventListener('click', addState);
+    allBtnPublicate[i].addEventListener('click', stateCounter);
   }
 };
 

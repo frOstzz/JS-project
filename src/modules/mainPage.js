@@ -6,20 +6,24 @@ import {
 } from '../modules/createElements.js';
 
 import { createEditor } from '../modules/editor.js';
-import { stateCounter } from '../modules/storage.js';
+//import { stateCounter } from '../modules/storage.js';
 
 export const createMainPage = () => {
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
   const information = createDivs(createHashForDiv('', 'information'));
   const stateList = createDivs(createHashForDiv('state-list', 'state-list'));
-  const personInfo = createDivs(createHashForDiv('', 'person-info'));
+  const personInfo = createDivs(createHashForDiv('info', 'person-info'));
   const combineDiv = createDivs(createHashForDiv('combine-div', 'combine-div'));
 
   //times code==============
   const username = 'Admin';
 
-  personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                          <span class="info-text">Your states: <strong>${stateCounter}</strong></span>`;
+  let counter = stateCounter();
+
+  personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>`;
+
+  personInfo.innerHTML = `<span class="info-text">Your states: <strong>${counter}</strong></span>`; //bug
+
   //============================
 
   //buttons
@@ -40,4 +44,10 @@ export const createMainPage = () => {
     combineDiv.classList.add('hide');
   });
   addArticle.addEventListener('click', createEditor);
+};
+
+export const stateCounter = () => {
+  const stateList = document.getElementsByClassName('custom-article');
+  let counter = stateList.length;
+  return counter;
 };
