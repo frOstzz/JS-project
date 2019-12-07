@@ -56,8 +56,8 @@ export const createEditor = () => {
 
   createHeadingList(editorButtons);
 
+  mainDiv.appendChild(title);
   mainDiv.appendChild(editor);
-  editor.appendChild(title);
 
   mainDiv.appendChild(pubBtn);
 
@@ -69,7 +69,7 @@ export const createEditor = () => {
     let hashForState = {};
 
     hashForState.title = title.value;
-    hashForState.state = editor.outerText;
+    hashForState.state = editor.innerHTML;
     arrForState.push(hashForState);
 
     return hashForState;

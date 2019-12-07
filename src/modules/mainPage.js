@@ -6,7 +6,9 @@ import {
 } from '../modules/createElements.js';
 
 import { createEditor } from '../modules/editor.js';
+import { arrForState } from './storage.js';
 //import { stateCounter } from '../modules/storage.js';
+import { viewState } from './viewStates.js';
 
 export const createMainPage = () => {
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
@@ -43,6 +45,10 @@ export const createMainPage = () => {
     combineDiv.classList.add('hide');
   });
   addArticle.addEventListener('click', createEditor);
+
+  //test code
+
+  viewState();
 };
 
 export const stateCounter = () => {
