@@ -61,6 +61,14 @@ export const publicateButton = {
   value: 'Publicate',
 };
 
+export const backButton = {
+  elem: 'input',
+  type: 'button',
+  id: 'back-btn',
+  className: 'my-button',
+  value: 'Back',
+};
+
 export const createHashForDiv = (id, className) => {
   const divHash = {
     elem: 'div',
