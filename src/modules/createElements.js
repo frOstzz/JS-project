@@ -1,5 +1,3 @@
-import { createEditor } from './editor.js';
-
 //functions===========================
 export const createButtons = (hash) => {
   const element = document.createElement(hash.elem);
@@ -67,6 +65,13 @@ export const backButton = {
   id: 'back-btn',
   className: 'my-button',
   value: 'Back',
+};
+
+export const delBtn = {
+  elem: 'input',
+  type: 'button',
+  className: 'delete-button',
+  value: 'del',
 };
 
 export const createHashForDiv = (id, className) => {
