@@ -6,9 +6,9 @@ import {
 } from '../modules/createElements.js';
 
 import { createEditor } from '../modules/editor.js';
-import { arrForState } from './storage.js';
-//import { stateCounter } from '../modules/storage.js';
 import { viewState } from './viewStates.js';
+import { delButtonsIds } from './storage.js';
+//import { deleteState } from './deleteState.js';
 
 export const createMainPage = () => {
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
@@ -17,20 +17,14 @@ export const createMainPage = () => {
   const personInfo = createDivs(createHashForDiv('info', 'person-info'));
   const combineDiv = createDivs(createHashForDiv('combine-div', 'combine-div'));
 
-  //times code==============
   const username = 'Admin';
 
-  let counter = stateCounter();
-
+  let counter = 0;
   personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                          <span class="info-text">Your states: <strong>${counter}</strong></span>`; //bug
+                          <span class="info-text">Your states: <strong>${counter}</strong></span>`;
 
-  //============================
-
-  //buttons
   const addArticle = createButtons(publicateButton);
 
-  //Append DOM elements
   document.body.appendChild(mainDiv);
   mainDiv.appendChild(combineDiv);
 
@@ -40,19 +34,21 @@ export const createMainPage = () => {
   information.appendChild(personInfo);
   personInfo.appendChild(addArticle);
 
+  const stateCounter = () => {
+    counter += 1;
+    personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
+                            <span class="info-text">Your states: <strong>${counter}</strong></span>`;
+    personInfo.appendChild(addArticle);
+  };
+
   addArticle.addEventListener('click', () => {
     combineDiv.classList.remove('combine-div');
     combineDiv.classList.add('hide');
   });
   addArticle.addEventListener('click', createEditor);
-
-  //test code
+  addArticle.addEventListener('click', stateCounter);
 
   viewState();
-};
 
-export const stateCounter = () => {
-  const stateList = document.getElementsByClassName('custom-article');
-  let counter = stateList.length;
-  return counter;
+  // deleteState();
 };

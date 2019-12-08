@@ -9,11 +9,12 @@ import {
   publicateButton,
   createInputs,
   articleTitleInputHash,
+  delBtn,
 } from '../modules/createElements.js';
 
 import { arrForState } from './storage.js';
-
-import { stateCounter } from './mainPage.js';
+import { stateIds, delButtonsIds } from './storage.js';
+import { deleteState } from './deleteState.js';
 
 export const createEditor = () => {
   const mainContainer = document.getElementById('container');
@@ -93,15 +94,24 @@ export const createEditor = () => {
   const addState = () => {
     const stateList = document.getElementById('state-list');
     const state = document.createElement('div');
+    const deleteButton = createButtons(delBtn);
+    let buttonId = `delete-button${arrForState.length}`;
+    deleteButton.id = buttonId;
+    delButtonsIds.push(buttonId);
+
     state.className = 'custom-article';
-    state.id = 'state' + stateEditorList.length;
+    let stateId = `state${arrForState.length}`;
+    state.id = stateId;
+    stateIds.push(stateId);
     stateList.appendChild(state);
 
     storage();
 
     for (let i = 0; i < arrForState.length; i += 1) {
       state.innerHTML = `<span class="state-title">${arrForState[i].title}</span>`;
+      state.appendChild(deleteButton);
     }
+    console.log(delButtonsIds);
   };
 
   const allBtnPublicate = document.getElementsByClassName('my-button');
@@ -109,7 +119,7 @@ export const createEditor = () => {
   for (let i = 1; i < allBtnPublicate.length; i += 1) {
     allBtnPublicate[i].addEventListener('click', hideEditor);
     allBtnPublicate[i].addEventListener('click', addState);
-    allBtnPublicate[i].addEventListener('click', stateCounter);
+    allBtnPublicate[i].addEventListener('click', deleteState);
   }
 };
 
