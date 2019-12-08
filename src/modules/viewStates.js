@@ -1,4 +1,4 @@
-import { arrForState } from './storage.js';
+import { arrForState, stateIds } from './storage.js';
 import { createDivs, createHashForDiv, createButtons, backButton } from './createElements.js';
 
 export const viewState = () => {
@@ -8,7 +8,7 @@ export const viewState = () => {
 
   combDiv.onclick = (event) => {
     let target = event.target;
-    if (target.className === 'custom-article') {
+    if (target.className === 'custom-article' || target.tagName === 'SPAN') {
       combDiv.classList.remove('combine-div');
       combDiv.classList.add('hide');
 
@@ -22,7 +22,11 @@ export const viewState = () => {
         };
 
         mainDiv.appendChild(viewStates);
-        viewStates.innerHTML = arrForState[i].state;
+
+        if (stateIds[i] === event.target.id) {
+          viewStates.innerHTML = arrForState[i].state;
+        }
+
         viewStates.appendChild(backBtn);
 
         backBtn.addEventListener('click', backToMainPage);
