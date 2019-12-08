@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgb(235, 229, 229);
 }
 
 .show {
@@ -23,13 +24,17 @@ body {
 .information {
   height: 90vh;
   overflow: hidden;
-  border: 1px solid #000;
+  background-color: #fff;
+  box-shadow: 0 0 10px #000;
+  border-radius: 10px;
   width: 350px;
   margin: 10px;
   .my-button {
     border: none;
     padding: 10px;
     width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: $colorButton;
     transition: 0.2s ease-in-out all;
     cursor: pointer;
@@ -60,9 +65,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   height: 90vh;
+  background-color: #fff;
+  box-shadow: 0 0 10px #000;
+  border-radius: 10px;
   justify-content: center;
   overflow: auto;
-  border: 1px solid #000;
   width: 100%;
   margin: 0px 0px 0px 10px;
 

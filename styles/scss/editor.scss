@@ -6,20 +6,38 @@
   flex-direction: column;
   .edit-buttons {
     width: 70%;
-    border: 1px solid #000;
-    border-bottom: none;
+    background-color: #fff;
+    .editor-buttons {
+      padding: 5px;
+      border: none;
+      background-color: $colorButton;
+      color: #fff;
+      margin-right: 1px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
-  .editor {
-    height: 500px;
+  .article-title {
+    height: 30px;
     width: 70%;
-    border: 1px solid #000;
+    z-index: 1;
     &:focus {
       outline: none;
     }
-    .article-title {
-      height: 30px;
-      width: 100%;
-      border: 1px solid #000;
+  }
+  .editor {
+    min-height: 500px;
+    width: 70%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+    &:focus {
+      outline: none;
     }
   }
 }
