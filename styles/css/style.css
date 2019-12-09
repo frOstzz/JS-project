@@ -98,6 +98,10 @@ body {
     -ms-flex-align: center;
     align-items: center;
     width: 200px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     height: 300px;
     margin: 10px;
     -ms-flex-preferred-size: 20%;
@@ -118,30 +122,89 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; }
+  .container-editor .my-button {
+    border: none;
+    padding: 10px;
+    width: 70%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -webkit-box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.8);
+    background-color: #1b4be7;
+    -webkit-transition: 0.2s ease-in-out all;
+    -o-transition: 0.2s ease-in-out all;
+    transition: 0.2s ease-in-out all;
+    cursor: pointer; }
+    .container-editor .my-button:hover {
+      -webkit-transition: 0.2s ease-in-out all;
+      -o-transition: 0.2s ease-in-out all;
+      transition: 0.2s ease-in-out all;
+      background-color: #fff;
+      border-top: none;
+      letter-spacing: 5px; }
+    .container-editor .my-button:focus {
+      outline: none; }
   .container-editor .edit-buttons {
     width: 70%;
-    background-color: #fff; }
+    background-color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-shadow: 0px 35px 10px 0px rgba(0, 0, 0, 0.8), 0px 10px 10px 0px rgba(0, 0, 0, 0.8), 0px -15px 10px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 35px 10px 0px rgba(0, 0, 0, 0.8), 0px 10px 10px 0px rgba(0, 0, 0, 0.8), 0px -15px 10px 0px rgba(0, 0, 0, 0.8); }
     .container-editor .edit-buttons .editor-buttons {
       padding: 5px;
       border: none;
-      background-color: #1b4be7;
-      color: #fff;
+      background-color: rgba(188, 188, 189, 0.993);
+      color: #000;
+      border-radius: 5px;
       margin-right: 1px; }
       .container-editor .edit-buttons .editor-buttons:hover {
         cursor: pointer; }
       .container-editor .edit-buttons .editor-buttons:focus {
         outline: none; }
+      .container-editor .edit-buttons .editor-buttons:active {
+        background-color: #000;
+        color: white; }
   .container-editor .article-title {
     height: 30px;
     width: 70%;
-    z-index: 1; }
+    border: 1px solid #000;
+    border-right: none;
+    border-left: none;
+    z-index: 1;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2em; }
     .container-editor .article-title:focus {
-      outline: none; }
+      outline: none;
+      text-align: center; }
+    .container-editor .article-title:focus::-webkit-input-placeholder {
+      color: transparent; }
+    .container-editor .article-title:focus:-ms-input-placeholder {
+      color: transparent; }
+    .container-editor .article-title:focus::-ms-input-placeholder {
+      color: transparent; }
+    .container-editor .article-title:focus::placeholder {
+      color: transparent; }
+    .container-editor .article-title::-webkit-input-placeholder {
+      text-align: center;
+      font-size: 1.2em; }
+    .container-editor .article-title:-ms-input-placeholder {
+      text-align: center;
+      font-size: 1.2em; }
+    .container-editor .article-title::-ms-input-placeholder {
+      text-align: center;
+      font-size: 1.2em; }
+    .container-editor .article-title::placeholder {
+      text-align: center;
+      font-size: 1.2em; }
   .container-editor .editor {
     min-height: 500px;
     width: 70%;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     background-color: #fff;
     -webkit-box-shadow: 0 0 10px #000;
     box-shadow: 0 0 10px #000; }
