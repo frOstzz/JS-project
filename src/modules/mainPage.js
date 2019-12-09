@@ -7,7 +7,7 @@ import {
 
 import { createEditor } from '../modules/editor.js';
 import { viewState } from './viewStates.js';
-import { delButtonsIds } from './storage.js';
+import { delButtonsIds, arrForState } from './storage.js';
 //import { deleteState } from './deleteState.js';
 
 export const createMainPage = () => {
@@ -19,9 +19,8 @@ export const createMainPage = () => {
 
   const username = 'Admin';
 
-  let counter = 0;
   personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                          <span class="info-text">Your states: <strong>${counter}</strong></span>`;
+                          <span class="info-text">Your states: <strong>${arrForState.length}</strong></span>`;
 
   const addArticle = createButtons(publicateButton);
 
@@ -35,9 +34,9 @@ export const createMainPage = () => {
   personInfo.appendChild(addArticle);
 
   const stateCounter = () => {
-    counter += 1;
     personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                            <span class="info-text">Your states: <strong>${counter}</strong></span>`;
+                            <span class="info-text">Your states: <strong>${arrForState.length +
+                              1}</strong></span>`;
     personInfo.appendChild(addArticle);
   };
 

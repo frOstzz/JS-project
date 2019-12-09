@@ -1,4 +1,4 @@
-import { stateIds, delButtonsIds } from './storage.js';
+import { stateIds, delButtonsIds, arrForState } from './storage.js';
 
 export const deleteState = () => {
   const allDeleteButtons = document.getElementsByClassName('delete-button');
@@ -7,6 +7,7 @@ export const deleteState = () => {
     const stateId = stateIds.findIndex((el) => el === event.target.id);
     stateIds.splice(stateId, 1);
     delButtonsIds.splice(stateId, 1);
+    arrForState.splice(stateId, 1);
     console.log(stateIds);
     console.log(delButtonsIds);
 
