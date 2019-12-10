@@ -14,7 +14,6 @@ import {
 
 import { arrForState } from './storage.js';
 import { stateIds, delButtonsIds } from './storage.js';
-import { deleteState } from './deleteState.js';
 
 export const createEditor = () => {
   const mainContainer = document.getElementById('container');
@@ -111,7 +110,6 @@ export const createEditor = () => {
       state.innerHTML = `<span class="state-title">${arrForState[i].title}</span>`;
       state.appendChild(deleteButton);
     }
-    console.log(delButtonsIds);
   };
 
   const allBtnPublicate = document.getElementsByClassName('my-button');
@@ -119,7 +117,6 @@ export const createEditor = () => {
   for (let i = 1; i < allBtnPublicate.length; i += 1) {
     allBtnPublicate[i].addEventListener('click', hideEditor);
     allBtnPublicate[i].addEventListener('click', addState);
-    allBtnPublicate[i].addEventListener('click', deleteState);
   }
 };
 

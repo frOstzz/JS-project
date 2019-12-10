@@ -1,24 +1,26 @@
-import { stateIds, delButtonsIds, arrForState } from './storage.js';
+import { delButtonsIds, counter } from './storage.js';
 
-export const deleteState = () => {
-  const allDeleteButtons = document.getElementsByClassName('delete-button');
+const deleteState = () => {
+  let target = event.target;
+  const delBtnIndex = delButtonsIds.findIndex((el) => el === target.id);
 
-  const delState = () => {
-    const stateId = stateIds.findIndex((el) => el === event.target.id);
-    stateIds.splice(stateId, 1);
-    delButtonsIds.splice(stateId, 1);
-    arrForState.splice(stateId, 1);
-    console.log(stateIds);
-    console.log(delButtonsIds);
+  let state = document.getElementById('state' + delBtnIndex);
 
-    const stateList = document.getElementById('state-list');
-    let state = document.getElementById('state' + stateIds.length);
-    console.log(stateIds.length);
-    console.log(state);
-    state.remove();
-  };
+  document.getElementById('state-list').removeChild(state);
+};
 
-  for (let i = 0; i < allDeleteButtons.length; i += 1) {
-    allDeleteButtons[i].addEventListener('click', delState);
-  }
+export const deleteArticle = (elem, username, btn) => {
+  let div = document.querySelector('#container');
+  const personInfo = document.getElementById('info');
+
+  div.addEventListener('click', (event) => {
+    if (event.target.className === 'delete-button') {
+      deleteState();
+      counter.pop(1);
+
+      elem.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
+                        <span class="info-text">Your states: <strong>${counter.length}</strong></span>`;
+      elem.appendChild(btn);
+    }
+  });
 };

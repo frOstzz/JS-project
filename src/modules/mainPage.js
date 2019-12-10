@@ -7,8 +7,8 @@ import {
 
 import { createEditor } from '../modules/editor.js';
 import { viewState } from './viewStates.js';
-import { delButtonsIds, arrForState } from './storage.js';
-//import { deleteState } from './deleteState.js';
+import { deleteArticle } from './deleteState.js';
+import { counter } from './storage.js';
 
 export const createMainPage = () => {
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
@@ -20,7 +20,7 @@ export const createMainPage = () => {
   const username = 'Admin';
 
   personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                          <span class="info-text">Your states: <strong>${arrForState.length}</strong></span>`;
+                          <span class="info-text">Your states: <strong>${counter.length}</strong></span>`;
 
   const addArticle = createButtons(publicateButton);
 
@@ -34,9 +34,9 @@ export const createMainPage = () => {
   personInfo.appendChild(addArticle);
 
   const stateCounter = () => {
+    counter.push(1);
     personInfo.innerHTML = `<span class="info-text">Your name: <strong>${username}</strong></span>
-                            <span class="info-text">Your states: <strong>${arrForState.length +
-                              1}</strong></span>`;
+                            <span class="info-text">Your states: <strong>${counter.length}</strong></span>`;
     personInfo.appendChild(addArticle);
   };
 
@@ -48,6 +48,5 @@ export const createMainPage = () => {
   addArticle.addEventListener('click', stateCounter);
 
   viewState();
-
-  // deleteState();
+  deleteArticle(personInfo, username, addArticle);
 };
