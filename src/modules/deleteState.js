@@ -14,7 +14,7 @@ export const deleteArticle = (elem, username, btn) => {
   const personInfo = document.getElementById('info');
 
   div.addEventListener('click', (event) => {
-    if (event.target.className === 'delete-button') {
+    if (event.target.className === 'delete-button fa fa-trash') {
       deleteState();
       counter.pop(1);
 
