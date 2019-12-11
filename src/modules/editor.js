@@ -10,10 +10,12 @@ import {
   createInputs,
   articleTitleInputHash,
   delBtn,
+  publicateEditorButton,
 } from '../modules/createElements.js';
 
 import { arrForState } from './storage.js';
 import { stateIds, delButtonsIds } from './storage.js';
+import { titleValid, inProcess } from './validate.js';
 
 export const createEditor = () => {
   const mainContainer = document.getElementById('container');
@@ -49,7 +51,7 @@ export const createEditor = () => {
 
   const title = createInputs(articleTitleInputHash);
 
-  const pubBtn = createButtons(publicateButton);
+  const pubBtn = createButtons(publicateEditorButton);
 
   mainContainer.appendChild(mainDiv);
   mainDiv.appendChild(editorButtons);
@@ -64,6 +66,11 @@ export const createEditor = () => {
   workEditor();
 
   const stateEditorList = document.getElementsByClassName('state-editor');
+
+  title.focus();
+
+  title.addEventListener('focus', inProcess);
+  title.addEventListener('blur', titleValid);
 
   const storage = () => {
     let hashForState = {};
@@ -128,7 +135,7 @@ const workEditor = () => {
     document.execCommand('formatBlock', false, heading.value);
   };
 
-  heading.addEventListener('change', execCommandWithArg);
+  heading.addEventListener('click', execCommandWithArg);
 
   const setAttribute = (element) => {
     document.execCommand(element.dataset.attribute, false);
