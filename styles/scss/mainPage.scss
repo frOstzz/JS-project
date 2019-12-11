@@ -77,20 +77,46 @@ body {
   .custom-article {
     box-shadow: 0px 0px 5px 2px #000;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     min-width: 200px;
     user-select: none;
     border-radius: 5px;
     background-color: #fff;
     height: 300px;
-    margin: 10px;
+    margin: 20px 10px 10px 10px;
     flex-basis: 20%;
+    transition: 0.2s ease-in-out all;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-10px);
+      transition: 0.2s ease-in-out all;
+    }
     .state-title {
       font-size: 24px;
       text-transform: uppercase;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
         sans-serif;
+    }
+    .delete-button {
+      border: none;
+      background-color: #000;
+      padding: 5px;
+      font-size: 20px;
+      border-radius: 5px;
+      color: #fff;
+      transition: 0.2s ease-in-out all;
+      margin: 10px;
+      &:hover {
+        cursor: pointer;
+        background-color: #fff;
+        color: #000;
+        transition: 0.2s ease-in-out all;
+      }
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

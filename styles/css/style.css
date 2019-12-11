@@ -93,9 +93,13 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -107,13 +111,44 @@ body {
     border-radius: 5px;
     background-color: #fff;
     height: 300px;
-    margin: 10px;
+    margin: 20px 10px 10px 10px;
     -ms-flex-preferred-size: 20%;
-    flex-basis: 20%; }
+    flex-basis: 20%;
+    -webkit-transition: 0.2s ease-in-out all;
+    -o-transition: 0.2s ease-in-out all;
+    transition: 0.2s ease-in-out all; }
+    .state-list .custom-article:hover {
+      cursor: pointer;
+      -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+      transform: translateY(-10px);
+      -webkit-transition: 0.2s ease-in-out all;
+      -o-transition: 0.2s ease-in-out all;
+      transition: 0.2s ease-in-out all; }
     .state-list .custom-article .state-title {
       font-size: 24px;
       text-transform: uppercase;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; }
+    .state-list .custom-article .delete-button {
+      border: none;
+      background-color: #000;
+      padding: 5px;
+      font-size: 20px;
+      border-radius: 5px;
+      color: #fff;
+      -webkit-transition: 0.2s ease-in-out all;
+      -o-transition: 0.2s ease-in-out all;
+      transition: 0.2s ease-in-out all;
+      margin: 10px; }
+      .state-list .custom-article .delete-button:hover {
+        cursor: pointer;
+        background-color: #fff;
+        color: #000;
+        -webkit-transition: 0.2s ease-in-out all;
+        -o-transition: 0.2s ease-in-out all;
+        transition: 0.2s ease-in-out all; }
+      .state-list .custom-article .delete-button:focus {
+        outline: none; }
 
 .container-editor {
   display: -webkit-box;
@@ -174,39 +209,18 @@ body {
       .container-editor .edit-buttons .editor-buttons:active {
         background-color: #000;
         color: white; }
-  .container-editor .article-title {
-    height: 30px;
-    width: 70%;
-    border: 1px solid #000;
-    border-right: none;
+  .container-editor .invalid {
+    border: 2px solid red;
     border-left: none;
-    z-index: 1;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.2em; }
-    .container-editor .article-title:focus {
-      outline: none;
-      text-align: center; }
-    .container-editor .article-title:focus::-webkit-input-placeholder {
-      color: transparent; }
-    .container-editor .article-title:focus:-ms-input-placeholder {
-      color: transparent; }
-    .container-editor .article-title:focus::-ms-input-placeholder {
-      color: transparent; }
-    .container-editor .article-title:focus::placeholder {
-      color: transparent; }
-    .container-editor .article-title::-webkit-input-placeholder {
-      text-align: center;
-      font-size: 1.2em; }
-    .container-editor .article-title:-ms-input-placeholder {
-      text-align: center;
-      font-size: 1.2em; }
-    .container-editor .article-title::-ms-input-placeholder {
-      text-align: center;
-      font-size: 1.2em; }
-    .container-editor .article-title::placeholder {
-      text-align: center;
-      font-size: 1.2em; }
+    border-right: none; }
+  .container-editor .valid {
+    border: 2px solid #1b4be7;
+    border-left: none;
+    border-right: none; }
+  .container-editor .process {
+    border: 2px solid #ffbb00;
+    border-left: none;
+    border-right: none; }
   .container-editor .editor {
     min-height: 500px;
     width: 70%;
@@ -214,4 +228,80 @@ body {
     -webkit-box-shadow: 0 0 10px #000;
     box-shadow: 0 0 10px #000; }
     .container-editor .editor:focus {
+      outline: none; }
+
+.article-title {
+  height: 30px;
+  width: 70%;
+  border: 1px solid #000;
+  border-right: none;
+  border-left: none;
+  z-index: 1;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.2em; }
+  .article-title:focus {
+    outline: none;
+    text-align: center; }
+  .article-title:focus::-webkit-input-placeholder {
+    color: transparent; }
+  .article-title:focus:-ms-input-placeholder {
+    color: transparent; }
+  .article-title:focus::-ms-input-placeholder {
+    color: transparent; }
+  .article-title:focus::placeholder {
+    color: transparent; }
+  .article-title::-webkit-input-placeholder {
+    text-align: center;
+    font-size: 1.2em; }
+  .article-title:-ms-input-placeholder {
+    text-align: center;
+    font-size: 1.2em; }
+  .article-title::-ms-input-placeholder {
+    text-align: center;
+    font-size: 1.2em; }
+  .article-title::placeholder {
+    text-align: center;
+    font-size: 1.2em; }
+
+.view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #fff;
+  margin: 0 auto;
+  width: 70%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-box-shadow: 0 0 10px 0 #000;
+  box-shadow: 0 0 10px 0 #000; }
+  .view .text-center {
+    text-align: center; }
+  .view .my-button {
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #1b4be7;
+    -webkit-transition: 0.2s ease-in-out all;
+    -o-transition: 0.2s ease-in-out all;
+    transition: 0.2s ease-in-out all;
+    cursor: pointer; }
+    .view .my-button:hover {
+      -webkit-transition: 0.2s ease-in-out all;
+      -o-transition: 0.2s ease-in-out all;
+      transition: 0.2s ease-in-out all;
+      background-color: #fff;
+      border: 1px solid #000;
+      letter-spacing: 5px; }
+    .view .my-button:focus {
       outline: none; }
