@@ -35,7 +35,7 @@ export const createHeadingList = (place) => {
   select.id = 'heading';
   place.appendChild(select);
 
-  for (let i = 1; i <= 6; i += 1) {
+  for (let i = 2; i <= 6; i += 1) {
     const option = new Option(`H${i}`, `H${i}`);
     select.appendChild(option);
   }
@@ -59,6 +59,14 @@ export const publicateButton = {
   value: 'Publicate',
 };
 
+export const publicateEditorButton = {
+  elem: 'input',
+  type: 'button',
+  id: 'pub',
+  className: 'my-button',
+  value: 'Publicate',
+};
+
 export const backButton = {
   elem: 'input',
   type: 'button',
@@ -68,10 +76,8 @@ export const backButton = {
 };
 
 export const delBtn = {
-  elem: 'input',
-  type: 'button',
-  className: 'delete-button',
-  value: 'del',
+  elem: 'button',
+  className: 'delete-button fa fa-trash',
 };
 
 export const createHashForDiv = (id, className) => {
