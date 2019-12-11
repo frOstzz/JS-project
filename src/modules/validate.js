@@ -2,6 +2,8 @@ export const titleValid = () => {
   const articleTitle = document.getElementById('title');
   const pubBtn = document.getElementById('pub');
 
+  console.log(articleTitle.value);
+
   if (articleTitle.value === '') {
     articleTitle.classList.remove('process');
     articleTitle.classList.remove('valid');

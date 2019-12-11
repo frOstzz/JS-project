@@ -117,6 +117,8 @@ export const createEditor = () => {
       state.innerHTML = `<span class="state-title">${arrForState[i].title}</span>`;
       state.appendChild(deleteButton);
     }
+
+    title.value = '';
   };
 
   const allBtnPublicate = document.getElementsByClassName('my-button');
