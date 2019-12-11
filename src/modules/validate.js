@@ -1,28 +1,30 @@
 export const titleValid = () => {
-  const articleTitle = document.getElementById('title');
+  const articleTitle = document.getElementsByClassName('article-title');
   const pubBtn = document.getElementById('pub');
 
-  console.log(articleTitle.value);
-
-  if (articleTitle.value === '') {
-    articleTitle.classList.remove('process');
-    articleTitle.classList.remove('valid');
-    articleTitle.classList.add('invalid');
-    pubBtn.disabled = true;
-  } else if (articleTitle.value.length > 50) {
-    articleTitle.classList.remove('process');
-    articleTitle.classList.remove('valid');
-    articleTitle.classList.add('invalid');
-    pubBtn.disabled = true;
-  } else if (articleTitle.value.length < 10) {
-    articleTitle.classList.remove('process');
-    articleTitle.classList.remove('valid');
-    articleTitle.classList.add('invalid');
-    pubBtn.disabled = true;
-  } else {
-    articleTitle.classList.remove('process');
-    articleTitle.classList.add('valid');
-    pubBtn.disabled = false;
+  console.log(articleTitle);
+  for (let i = 0; i < articleTitle.length; i += 1) {
+    if (articleTitle[i].value === '') {
+      articleTitle[i].classList.remove('process');
+      articleTitle[i].classList.remove('valid');
+      articleTitle[i].classList.add('invalid');
+      pubBtn.disabled = true;
+    } else if (articleTitle[i].value.length > 50) {
+      articleTitle[i].classList.remove('process');
+      articleTitle[i].classList.remove('valid');
+      articleTitle[i].classList.add('invalid');
+      pubBtn.disabled = true;
+    } else if (articleTitle[i].value.length < 10) {
+      articleTitle[i].classList.remove('process');
+      articleTitle[i].classList.remove('valid');
+      articleTitle[i].classList.add('invalid');
+      pubBtn.disabled = true;
+    } else {
+      articleTitle[i].classList.remove('process');
+      articleTitle[i].classList.remove('invalid');
+      articleTitle[i].classList.add('valid');
+      pubBtn.disabled = false;
+    }
   }
 };
 

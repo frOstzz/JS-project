@@ -8,9 +8,12 @@ export const viewState = () => {
 
   combDiv.onclick = (event) => {
     let target = event.target;
+
     if (target.className === 'custom-article' || target.tagName === 'SPAN') {
       combDiv.classList.remove('combine-div');
       combDiv.classList.add('hide');
+
+      document.title = `View article`;
 
       for (let i = 0; i < arrForState.length; i += 1) {
         const viewStates = createDivs(createHashForDiv('view-state' + i, 'view'));
@@ -31,6 +34,9 @@ export const viewState = () => {
         viewStates.appendChild(backBtn);
 
         backBtn.addEventListener('click', backToMainPage);
+        backBtn.addEventListener('click', () => {
+          document.title = 'Your articles';
+        });
       }
     }
   };

@@ -11,6 +11,7 @@ import { deleteArticle } from './deleteState.js';
 import { counter } from './storage.js';
 
 export const createMainPage = () => {
+  document.title = 'Your articles';
   const mainDiv = createDivs(createHashForDiv('container', 'container'));
   const information = createDivs(createHashForDiv('', 'information'));
   const stateList = createDivs(createHashForDiv('state-list', 'state-list'));
@@ -46,6 +47,9 @@ export const createMainPage = () => {
   });
   addArticle.addEventListener('click', createEditor);
   addArticle.addEventListener('click', stateCounter);
+  addArticle.addEventListener('click', () => {
+    document.title = 'Editor';
+  });
 
   viewState();
   deleteArticle(personInfo, username, addArticle);
