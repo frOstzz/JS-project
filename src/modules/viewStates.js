@@ -24,7 +24,8 @@ export const viewState = () => {
         mainDiv.appendChild(viewStates);
 
         if (stateIds[i] === event.target.id) {
-          viewStates.innerHTML = arrForState[i].state;
+          viewStates.innerHTML = `<h1 class="text-center">${arrForState[i].title}</h1>
+                                  ${arrForState[i].state}`;
         }
 
         viewStates.appendChild(backBtn);
