@@ -2,7 +2,6 @@ export const titleValid = () => {
   const articleTitle = document.getElementsByClassName('article-title');
   const pubBtn = document.getElementById('pub');
 
-  console.log(articleTitle);
   for (let i = 0; i < articleTitle.length; i += 1) {
     if (articleTitle[i].value === '') {
       articleTitle[i].classList.remove('process');
@@ -29,7 +28,9 @@ export const titleValid = () => {
 };
 
 export const inProcess = () => {
-  const articleTitle = document.getElementById('title');
+  const articleTitle = document.getElementsByClassName('article-title');
 
-  articleTitle.classList.add('process');
+  for (let i = 0; i < articleTitle.length; i += 1) {
+    articleTitle[i].classList.add('process');
+  }
 };
